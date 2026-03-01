@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://crcpgs3o02hy5"]
+
+[ext_resource type="PackedScene" uid="uid://bsanhduwq6nyp" path="res://Assets/CC0/Kenney/CityKitCommercial/building-skyscraper-b.glb" id="1_psm8q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7oney"]
+size = Vector3(1.3599998, 4.48, 1.3599999)
+
+[node name="SkyscraperB" unique_id=1067728091 instance=ExtResource("1_psm8q")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=423317416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1525574e-07, 2.24, 0)
+shape = SubResource("BoxShape3D_7oney")

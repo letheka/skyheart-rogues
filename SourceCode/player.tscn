@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cd3gjo6qyqocq"]
+
+[ext_resource type="Script" uid="uid://rm50bx5qrh06" path="res://SourceCode/player.gd" id="1_2byka"]
+[ext_resource type="PackedScene" uid="uid://bm2b4qk07iyo" path="res://Assets/CC0/Kenney/MiniCharacters/character-female-a.glb" id="1_6qxub"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2byka"]
+
+[node name="Player" type="CharacterBody3D" unique_id=900760650]
+script = ExtResource("1_2byka")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1167262682]
+
+[node name="Character" parent="Pivot" unique_id=363831071 instance=ExtResource("1_6qxub")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=463050964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3930431, 0)
+shape = SubResource("SphereShape3D_2byka")
+disabled = true

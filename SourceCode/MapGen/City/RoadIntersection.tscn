@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bveic1cr5rf1r"]
+
+[ext_resource type="PackedScene" uid="uid://eugx03td8tm2" path="res://Assets/CC0/Kenney/CityKitRoads/road-intersection.glb" id="1_d7xpl"]
+
+[node name="RoadIntersection" unique_id=1049161964 instance=ExtResource("1_d7xpl")]

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dt2cjbv1yxjv6"]
+
+[ext_resource type="Script" uid="uid://bcjaw0fvyhm41" path="res://SourceCode/bullet.gd" id="1_usfbs"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_usfbs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usfbs"]
+albedo_color = Color(0.5019608, 0.5019608, 1, 1)
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 2.0
+backlight = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_usfbs"]
+
+[node name="Bullet" type="Node3D" unique_id=456227032]
+script = ExtResource("1_usfbs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=557731982]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_usfbs")
+surface_material_override/0 = SubResource("StandardMaterial3D_usfbs")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=632613463]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=167107174]
+shape = SubResource("BoxShape3D_usfbs")

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://drp5pqewf5x6a"]
+
+[ext_resource type="PackedScene" uid="uid://ckqum0dhtntjf" path="res://Assets/CC0/Kenney/CityKitRoads/road-straight-half.glb" id="1_lm665"]
+
+[node name="RoadStraightHalf" unique_id=802156261 instance=ExtResource("1_lm665")]

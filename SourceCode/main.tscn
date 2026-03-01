@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://by68v22kyb2ha"]
+
+[ext_resource type="PackedScene" uid="uid://cd3gjo6qyqocq" path="res://SourceCode/player.tscn" id="1_hpyvu"]
+[ext_resource type="Script" uid="uid://b7d6fd38ah4ha" path="res://SourceCode/MapGen/mapgen_city.gd" id="1_vqd4v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uttnq"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hpyvu"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpyvu"]
+albedo_color = Color(0, 0.5019608, 0, 1)
+
+[node name="Main" type="Node" unique_id=97007027]
+process_mode = 1
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1563761754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=502753150]
+shape = SubResource("BoxShape3D_uttnq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1949832483]
+mesh = SubResource("BoxMesh_hpyvu")
+surface_material_override/0 = SubResource("StandardMaterial3D_hpyvu")
+
+[node name="Map" type="Node3D" parent="." unique_id=2023113993]
+script = ExtResource("1_vqd4v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=420102384]
+transform = Transform3D(0.70710677, 0.70441604, -0.061628457, 0, 0.087155804, 0.9961947, 0.70710677, -0.70441604, 0.061628457, 0, 25, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=900760650 instance=ExtResource("1_hpyvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0)
+
+[node name="CameraPivot" type="Marker3D" parent="." unique_id=1670445296]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=793710252]
+transform = Transform3D(1, 0, 0, 0, 0.087155804, 0.9961947, 0, -0.9961947, 0.087155804, 0, 15, 0)
+projection = 1
+size = 15.0
+far = 500.0
