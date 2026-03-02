@@ -2,7 +2,7 @@ extends Node3D
 
 var time_stopped = false
 
-var BULLET_SPEED = 20
+var BULLET_SPEED = 10
 var BULLET_DAMAGE = 15
 
 const KILL_TIMER = 25

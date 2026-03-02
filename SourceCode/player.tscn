@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cd3gjo6qyqocq"]
 
 [ext_resource type="Script" uid="uid://rm50bx5qrh06" path="res://SourceCode/player.gd" id="1_2byka"]
-[ext_resource type="PackedScene" uid="uid://bm2b4qk07iyo" path="res://Assets/CC0/Kenney/MiniCharacters/character-female-a.glb" id="1_6qxub"]
+[ext_resource type="PackedScene" uid="uid://c5mfbkme1wujj" path="res://Assets/CC0/Kenney/MiniCharacters/character-female-b.glb" id="3_m8eya"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2byka"]
 
@@ -10,8 +10,13 @@ script = ExtResource("1_2byka")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=1167262682]
 
-[node name="Character" parent="Pivot" unique_id=363831071 instance=ExtResource("1_6qxub")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+[node name="Character" parent="Pivot" unique_id=657879181 instance=ExtResource("3_m8eya")]
+transform = Transform3D(-1, 7.5710346e-08, 4.3711385e-08, 0, 0.49999997, -0.86602545, -8.742278e-08, -0.86602545, -0.49999997, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Pivot" unique_id=666889401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+omni_range = 10.0
+omni_attenuation = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=463050964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3930431, 0)

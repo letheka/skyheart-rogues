@@ -1,7 +1,7 @@
 extends Node
 
-var buildings = [preload("res://SourceCode/MapGen/City/SkyscraperA.tscn"),
-				 preload("res://SourceCode/MapGen/City/SkyscraperB.tscn"),
+# var buildings = [preload("res://SourceCode/MapGen/City/SkyscraperA.tscn"),
+var buildings = [preload("res://SourceCode/MapGen/City/SkyscraperB.tscn"),
 				 preload("res://SourceCode/MapGen/City/SkyscraperC.tscn"),
 				 preload("res://SourceCode/MapGen/City/SkyscraperD.tscn"),
 				 preload("res://SourceCode/MapGen/City/SkyscraperE.tscn")]
@@ -26,7 +26,7 @@ func _ready():
 	
 	for x in range(0, 15):
 		for z in range(0, 15):
-			if map_array[x][z]:
+			if _try_get_map_val(map_array, x, z):
 				if randf() > 0.1:
 					# Place a building
 					var bldg = buildings.pick_random().instantiate()
@@ -121,7 +121,6 @@ func _ready():
 						var road = intersection_scene.instantiate()
 						road.position = Vector3((x-8)*2, 1, (z-8)*2)
 						road.rotation = Vector3(0, deg_to_rad(90), 0)
-						add_child(road)
 						var road2 = road_scene.instantiate()
 						road2.position = Vector3((x-8)*2+1, 1, (z-8)*2)
 						var road3 = road_scene.instantiate()

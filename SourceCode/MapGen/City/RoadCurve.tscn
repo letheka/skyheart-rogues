@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ura5q61ibjdg"]
+
+[ext_resource type="PackedScene" uid="uid://cx7d26kdmtf4s" path="res://Assets/CC0/Kenney/CityKitRoads/road-bend.glb" id="1_oupms"]
+
+[node name="RoadCurve" unique_id=1117332577 instance=ExtResource("1_oupms")]

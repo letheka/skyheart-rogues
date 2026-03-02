@@ -7,6 +7,10 @@ size = Vector3(1.2949998, 4.08, 1.2420002)
 
 [node name="SkyscraperE" unique_id=2015270742 instance=ExtResource("1_asqtm")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=328212450]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=973809044]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=328212450]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1920929e-07, 2.04, 5.9604645e-08)
 shape = SubResource("BoxShape3D_700tm")

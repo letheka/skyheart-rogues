@@ -1,44 +1,158 @@
 [gd_scene format=3 uid="uid://by68v22kyb2ha"]
 
+[ext_resource type="Script" uid="uid://wxw7iyirygwv" path="res://SourceCode/player_ui.gd" id="1_3h8uj"]
+[ext_resource type="Texture2D" uid="uid://cucem3pgbwnwc" path="res://Assets/CC0/Cethiel/Grass_01.png" id="1_83738"]
 [ext_resource type="PackedScene" uid="uid://cd3gjo6qyqocq" path="res://SourceCode/player.tscn" id="1_hpyvu"]
 [ext_resource type="Script" uid="uid://b7d6fd38ah4ha" path="res://SourceCode/MapGen/mapgen_city.gd" id="1_vqd4v"]
+[ext_resource type="Texture2D" uid="uid://gcvbjvjrmgl0" path="res://Assets/CC0/Cethiel/Grass_01_Nrm.png" id="2_pku5w"]
+[ext_resource type="Texture2D" uid="uid://cjhryvphk3k01" path="res://Assets/CC0/Kenney/UIPackSciFi/bar_round_small.png" id="2_xtmgc"]
+[ext_resource type="Script" uid="uid://cfxgagawhbick" path="res://SourceCode/follow_player.gd" id="3_md8wv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uttnq"]
 size = Vector3(60, 2, 60)
 
-[sub_resource type="BoxMesh" id="BoxMesh_hpyvu"]
-size = Vector3(60, 2, 60)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpyvu"]
-albedo_color = Color(0, 0.5019608, 0, 1)
+albedo_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+albedo_texture = ExtResource("1_83738")
+normal_enabled = true
+normal_texture = ExtResource("2_pku5w")
+uv1_scale = Vector3(120, 120, 120)
+uv2_scale = Vector3(120, 120, 120)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hpyvu"]
+material = SubResource("StandardMaterial3D_hpyvu")
+size = Vector3(60, 2, 60)
+subdivide_width = 1
+subdivide_height = 1
+subdivide_depth = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_vqd4v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md8wv"]
+shading_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vqd4v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_md8wv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i0d2o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83738"]
+
+[sub_resource type="Environment" id="Environment_83738"]
+glow_enabled = true
 
 [node name="Main" type="Node" unique_id=97007027]
 process_mode = 1
 
+[node name="GUI" type="Node2D" parent="." unique_id=1111712349]
+
+[node name="PlayerUI" type="Node2D" parent="GUI" unique_id=1722398542]
+script = ExtResource("1_3h8uj")
+
+[node name="EnergyBarNode" type="Node2D" parent="GUI/PlayerUI" unique_id=883274937]
+position = Vector2(-48, 40)
+
+[node name="EnergyBar" type="TextureProgressBar" parent="GUI/PlayerUI/EnergyBarNode" unique_id=157095274]
+offset_right = 192.0
+offset_bottom = 64.0
+texture_under = ExtResource("2_xtmgc")
+texture_progress = ExtResource("2_xtmgc")
+tint_progress = Color(0, 1, 1, 1)
+
+[node name="HealthBarNode" type="Node2D" parent="GUI/PlayerUI" unique_id=616229767]
+position = Vector2(-48, -56)
+
+[node name="HealthBar" type="TextureProgressBar" parent="GUI/PlayerUI/HealthBarNode" unique_id=1281551741]
+offset_right = 192.0
+offset_bottom = 64.0
+texture_under = ExtResource("2_xtmgc")
+texture_progress = ExtResource("2_xtmgc")
+tint_progress = Color(0, 1, 0, 1)
+
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1563761754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=502753150]
 shape = SubResource("BoxShape3D_uttnq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1949832483]
 mesh = SubResource("BoxMesh_hpyvu")
-surface_material_override/0 = SubResource("StandardMaterial3D_hpyvu")
+
+[node name="Walls" type="Node" parent="." unique_id=1009470447]
+
+[node name="NorthWall" type="MeshInstance3D" parent="Walls" unique_id=1809167396]
+transform = Transform3D(32, 0, 0, 0, 2, 0, 0, 0, 2, -2, 2, -17.2)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_vqd4v")
+surface_material_override/0 = SubResource("StandardMaterial3D_md8wv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/NorthWall" unique_id=998199631]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/NorthWall/StaticBody3D" unique_id=426106539]
+shape = SubResource("BoxShape3D_vqd4v")
+
+[node name="SouthWall" type="MeshInstance3D" parent="Walls" unique_id=767839539]
+transform = Transform3D(32, 0, 0, 0, 2, 0, 0, 0, 2, -2, 2, 13.4)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_vqd4v")
+surface_material_override/0 = SubResource("StandardMaterial3D_md8wv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/SouthWall" unique_id=2074643637]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/SouthWall/StaticBody3D" unique_id=811416149]
+shape = SubResource("BoxShape3D_md8wv")
+
+[node name="EastWall" type="MeshInstance3D" parent="Walls" unique_id=1693318436]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 32, 13.4, 2, -2)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_vqd4v")
+surface_material_override/0 = SubResource("StandardMaterial3D_md8wv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/EastWall" unique_id=89176157]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/EastWall/StaticBody3D" unique_id=1683976276]
+shape = SubResource("BoxShape3D_i0d2o")
+
+[node name="WestWall" type="MeshInstance3D" parent="Walls" unique_id=1624768099]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 32, -17.4, 2, -2)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_vqd4v")
+surface_material_override/0 = SubResource("StandardMaterial3D_md8wv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/WestWall" unique_id=1111173950]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WestWall/StaticBody3D" unique_id=692110176]
+shape = SubResource("BoxShape3D_83738")
 
 [node name="Map" type="Node3D" parent="." unique_id=2023113993]
 script = ExtResource("1_vqd4v")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=420102384]
 transform = Transform3D(0.70710677, 0.70441604, -0.061628457, 0, 0.087155804, 0.9961947, 0.70710677, -0.70441604, 0.061628457, 0, 25, 0)
+light_energy = 0.1
+light_indirect_energy = 0.1
+light_bake_mode = 1
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=900760650 instance=ExtResource("1_hpyvu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 1, 0)
+collision_mask = 7
 
 [node name="CameraPivot" type="Marker3D" parent="." unique_id=1670445296]
+script = ExtResource("3_md8wv")
+min_x = -8.0
+max_x = 4.0
+min_z = -11.4
+max_z = 8.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=793710252]
-transform = Transform3D(1, 0, 0, 0, 0.087155804, 0.9961947, 0, -0.9961947, 0.087155804, 0, 15, 0)
+transform = Transform3D(1, 0, 0, 0, 0.087155804, 0.9961947, 0, -0.9961947, 0.087155804, 0, 10, 0.5)
 projection = 1
-size = 15.0
+size = 10.0
 far = 500.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=517808362]
+environment = SubResource("Environment_83738")
