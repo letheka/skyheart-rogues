@@ -1,0 +1,14 @@
+[package]
+name = "skyheart-rogues"
+version = "0.1.0"
+edition = "2024"
+description = "A roguelike game about magical girls"
+readme = "README.md"
+repository = "https://github.com/letheka/skyheart-rogues"
+license = "GPL-3.0-or-later"
+keywords = ["game", "roguelike"]
+
+[dependencies]
+binary-greedy-meshing = "0.5.2"
+bevy = "0.16.1"
+criterion = "0.6"
