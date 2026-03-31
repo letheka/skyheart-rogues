@@ -9,6 +9,11 @@ license = "GPL-3.0-or-later"
 keywords = ["game", "roguelike"]
 
 [dependencies]
-binary-greedy-meshing = "0.5.2"
-bevy = "0.16.1"
-criterion = "0.6"
+bevy = "0.18.1"
+bevy_app = "0.18.1"
+bevy_ecs = "0.18.1"
+rand = "0.10"
+rand_core = "0.10"
+bevy_rand = "0.14"
+bevy_prng = { version = "0.14", features = ["wyrand"] }
+binary-greedy-meshing = { git = "https://github.com/suprohub/binary-greedy-meshing.git" }
